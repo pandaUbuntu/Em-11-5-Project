@@ -1,0 +1,14 @@
+.header-wrapper{
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid #333;
+
+    p{
+        font-size: 24px;
+        margin: 20px;
+
+        span{
+            font-weight: bold;
+        }
+    }
+}
