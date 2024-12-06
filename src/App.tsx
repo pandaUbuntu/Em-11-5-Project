@@ -2,11 +2,8 @@ import { useState } from 'react'
 import './App.css'
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
+import { Category } from './services/CategoryService'
 
-export type Category = {
-  id: string,
-  name: string,
-}
 
 function App() {
   if(localStorage.getItem('categories') === null){

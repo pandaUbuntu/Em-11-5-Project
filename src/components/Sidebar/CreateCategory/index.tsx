@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import CreateButton from '../../Utils/CreateButton'
 import CustomInput from '../../Utils/CustonInput'
-import { Category } from '../../../App';
+import { Category, createCategory } from '../../../services/CategoryService';
 //import './style.css'
 
-function CreateCategory() {
+type CreateCategoryType ={
+    handle: (name:string) => void
+}
+function CreateCategory(props:CreateCategoryType) {
     const [text, setText] = useState("");
 
 
@@ -14,25 +17,8 @@ function CreateCategory() {
 
     function onClick(event:React.MouseEvent):void{
         event.preventDefault();
-
-        if(text.trim().length !== 0){
-            let jsonArray:any = localStorage.getItem("categories");
-
-            const category:Category = {
-                id: Math.random().toString(36).substr(2, 9),
-                name: text
-            };
-    
-            const categories:Category[] = JSON.parse(jsonArray);
-    
-            categories.push(category);
-    
-            localStorage.setItem("categories", JSON.stringify(categories));
-    
-            console.log(localStorage.getItem("categories"));
-        }
+        props.handle(text);
     }
-
 
   return (
     <div>
